@@ -8,102 +8,83 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="stylesheet" href="css/mui.min.css">
-		<style type="text/css">
-			header.mui-bar {
-				height: 100px;
-			}
-			
-			.mui-bar-tab .add-button {
-				position: relative;
-				overflow: inherit;
-			}
-			
-			.mui-bar-tab .add-button .center-button {
-				font-size: 53px;
-				position: absolute;
-				top: -26px;
-				left: 0;
-				right: 0;
-				margin: auto;
-				width: 100%;
-				height: 100%;
-			}
-		</style>
 	</head>
 
 	<body>
 		<header class="mui-bar mui-bar-nav">
-
+			<h1 id="title" class="mui-title">首页</h1>
 		</header>
 		<nav class="mui-bar mui-bar-tab">
-			<a id="defaultTab" class="mui-tab-item mui-active" href="tab-webview-subpage-about.html">
+			<a id="defaultTab" class="mui-tab-item mui-active" href="pages/sub-index.html">
 				<span class="mui-icon mui-icon-home"></span>
 				<span class="mui-tab-label">首页</span>
 			</a>
-			<a class="mui-tab-item add-button" href="javascript:;">
-				<span class="mui-icon mui-icon-plus center-button"></span>
+			<a class="mui-tab-item" href="pages/sub-memoirs.html">
+				<span class="mui-icon mui-icon-email"></span>
+				<span class="mui-tab-label">记忆录</span>
 			</a>
-			<a class="mui-tab-item" href="tab-webview-subpage-setting.html">
+			<a class="mui-tab-item" href="pages/sub-time-capsule.html">
+				<span class="mui-icon mui-icon-contact"></span>
+				<span class="mui-tab-label">时间胶囊</span>
+			</a>
+			<a class="mui-tab-item" href="pages/sub-self-center.html">
 				<span class="mui-icon mui-icon-gear"></span>
-				<span class="mui-tab-label">设置</span>
+				<span class="mui-tab-label">个人中心</span>
 			</a>
 		</nav>
 		<script src="js/mui.min.js"></script>
 		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-		<!--<script>
-			var BASEURL = "http://123.207.59.26:8080";
-			$.ajax({
-				url:BASEURL+'/Login',
-				data:{
-					username:'111',
-					password:'11'
-				},
-				type:'post'
-			}).done(function(data){
-				console.log(JSON.stringify(data))
-			}).error(function(err){
-				console.log(JSON.stringify(err))
-			})
-		</script>-->
 		<script>
-			var BASEURL = "http://123.207.59.26:8080";
-			mui.plusReady(function() {
-				mui.ajax(BASEURL + '/Login', {
-					data: {
-						username: '111',
-						password: '111'
-					},
-					dataType: 'json',
-					type: 'POST',
-					timeout: 10000,
-					headers: {
-						'Content-Type': 'application/json'
-					}, 
-					success: function(data) {
-						alert("登录成功" + JSON.stringify(data))
-						mui.ajax(BASEURL + '/Login', {
-							type: 'GET',
-							success: function(data) {
-								alert("测试session" + JSON.stringify(data))
-							},
-							error: function(err) {
-								alert("失败数据")
-							}
-						})
-					},
-					error: function(xhr, type, errorThrown) {
-						//异常处理；
-						console.log(JSON.stringify(xhr));
-					}
-				});
-
-			})
+//			var BASEURL = "http://123.207.59.26:8080";
+//			$.ajax({
+//				url:BASEURL+'/Login',
+//				data:{
+//					username:'111',
+//					password:'11'
+//				},
+//				type:'post'
+//			}).done(function(data){
+//				console.log(JSON.stringify(data))
+//			}).error(function(err){
+//				console.log(JSON.stringify(err))
+//			})
+//			var BASEURL = "http://123.207.59.26:8080";
+//			mui.plusReady(function() {
+//				mui.ajax(BASEURL + '/Login', {
+//					data: {
+//						username: '111',
+//						password: '111'
+//					},
+//					dataType: 'json',
+//					type: 'POST',
+//					timeout: 10000,
+//					headers: {
+//						'Content-Type': 'application/json'
+//					}, 
+//					success: function(data) {
+//						alert("登录成功" + JSON.stringify(data))
+//						mui.ajax(BASEURL + '/Login', {
+//							type: 'GET',
+//							success: function(data) {
+//								alert("测试session" + JSON.stringify(data))
+//							},
+//							error: function(err) {
+//								alert("失败数据")
+//							}
+//						})
+//					},
+//					error: function(xhr, type, errorThrown) {
+//						//异常处理；
+//						console.log(JSON.stringify(xhr));
+//					}
+//				});
+//
+//			})
 		</script>
-		<!--<script type="text/javascript" charset="utf-8">
+		<script type="text/javascript" charset="utf-8">
 			 //mui初始化
 			mui.init();
-			alert(1)
-			var subpages = ['tab-webview-subpage-about.html', 'tab-webview-subpage-setting.html'];
+			var subpages = ['pages/sub-index.html', 'pages/sub-memoirs.html', 'pages/sub-time-capsule.html', 'pages/sub-self-center.html'];
 			var subpage_style = {
 				top: '45px',
 				bottom: '51px'
@@ -136,7 +117,7 @@
 					return;
 				}
 				//更换标题
-//				title.innerHTML = this.querySelector('.mui-tab-label').innerHTML;
+				title.innerHTML = this.querySelector('.mui-tab-label').innerHTML;
 				//显示目标选项卡
 				//若为iOS平台或非首次显示，则直接显示
 				if(mui.os.ios||aniShow[targetTab]){
@@ -165,7 +146,7 @@
 					defaultTab.classList.add('mui-active');
 				}
 			});
-		</script>-->
+		</script>
 	</body>
 
 </html>
