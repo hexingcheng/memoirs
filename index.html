@@ -49,26 +49,42 @@
 			</a>
 		</nav>
 		<script src="js/mui.min.js"></script>
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<!--<script>
+			var BASEURL = "http://123.207.59.26:8080";
+			$.ajax({
+				url:BASEURL+'/Login',
+				data:{
+					username:'111',
+					password:'11'
+				},
+				type:'post'
+			}).done(function(data){
+				console.log(JSON.stringify(data))
+			}).error(function(err){
+				console.log(JSON.stringify(err))
+			})
+		</script>-->
 		<script>
-			var BASEURL = "123.207.59.26:8080";
+			var BASEURL = "http://123.207.59.26:8080";
 			mui.plusReady(function() {
 				mui.ajax(BASEURL + '/Login', {
 					data: {
 						username: '111',
 						password: '111'
 					},
-					dataType: 'json', 
-					type: 'post', 
-					timeout: 10000, 
+					dataType: 'json',
+					type: 'POST',
+					timeout: 10000,
 					headers: {
 						'Content-Type': 'application/json'
-					},
+					}, 
 					success: function(data) {
-						alert(JSON.stringify(data))
+						alert("登录成功" + JSON.stringify(data))
 						mui.ajax(BASEURL + '/Login', {
 							type: 'GET',
 							success: function(data) {
-								alert(JSON.stringify(data))
+								alert("测试session" + JSON.stringify(data))
 							},
 							error: function(err) {
 								alert("失败数据")
