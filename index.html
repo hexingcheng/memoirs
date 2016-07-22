@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="utf-8">
 		<title>Hello MUI</title>
@@ -11,9 +12,12 @@
 			header.mui-bar {
 				height: 100px;
 			}
+			
 			.mui-bar-tab .add-button {
-				    position: relative;overflow: inherit;
+				position: relative;
+				overflow: inherit;
 			}
+			
 			.mui-bar-tab .add-button .center-button {
 				font-size: 53px;
 				position: absolute;
@@ -26,9 +30,10 @@
 			}
 		</style>
 	</head>
+
 	<body>
 		<header class="mui-bar mui-bar-nav">
-			
+
 		</header>
 		<nav class="mui-bar mui-bar-tab">
 			<a id="defaultTab" class="mui-tab-item mui-active" href="tab-webview-subpage-about.html">
@@ -44,10 +49,47 @@
 			</a>
 		</nav>
 		<script src="js/mui.min.js"></script>
+		<script>
+			var BASEURL = "123.207.59.26:8080";
+			alert(BASEURL)
+			document.getElementsByTagName('header')[0].innerHTML = "1111"
+			mui.plusReady(function() {
+				alert(1)
+				mui.ajax(BASEURL + '/Login', {
+					data: {
+						username: 'username',
+						password: 'password'
+					},
+					dataType: 'json', 
+					type: 'post', 
+					timeout: 10000, 
+					headers: {
+						'Content-Type': 'application/json'
+					}
+					success: function(data) {
+						alert(JSON.stringify(data))
+						mui.ajax(BASEURL + '/Login', {
+							type: 'GET',
+							success: function(data) {
+								alert(JSON.stringify(data))
+							},
+							error: function(err) {
+								alert("失败数据")
+							}
+						})
+					},
+					error: function(xhr, type, errorThrown) {
+						//异常处理；
+						alert(type);
+					}
+				});
+
+			})
+		</script>
 		<!--<script type="text/javascript" charset="utf-8">
 			 //mui初始化
 			mui.init();
-			console.log(1)
+			alert(1)
 			var subpages = ['tab-webview-subpage-about.html', 'tab-webview-subpage-setting.html'];
 			var subpage_style = {
 				top: '45px',
