@@ -9,11 +9,30 @@
 	</head>
 
 	<body>
-		个人中心页面
 		
+		<div class="mui-content">
+		    	<div class="mui-scroll-wrapper">
+		    		<div class="mui-scroll">
+		    			<div>个人中心页面</div>
+		    			<button id='login' class="mui-btn mui-btn-primary">登录</button>
+		    			<button id='logup' class="mui-btn mui-btn-primary">注册</button>
+		    		</div>
+		    	</div>
+		</div>
 		<script src="../js/mui.min.js"></script>
+		<script src="../js/public.js"></script>
 		<script type="text/javascript">
 			mui.init()
+			mui.plusReady(function(){
+				 //  注册跳转
+			     document.getElementById("logup").addEventListener("tap", function(){
+			     	Tools.openWindow("reg.html")
+			     })
+			     // 登录也跳转
+			     document.getElementById("login").addEventListener("tap", function(){
+			     	Tools.openWindow("login.html")
+			     })
+			});
 		</script>
 	</body>
 
