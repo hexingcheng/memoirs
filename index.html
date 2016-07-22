@@ -51,21 +51,18 @@
 		<script src="js/mui.min.js"></script>
 		<script>
 			var BASEURL = "123.207.59.26:8080";
-			alert(BASEURL)
-			document.getElementsByTagName('header')[0].innerHTML = "1111"
 			mui.plusReady(function() {
-				alert(1)
 				mui.ajax(BASEURL + '/Login', {
 					data: {
-						username: 'username',
-						password: 'password'
+						username: '111',
+						password: '111'
 					},
 					dataType: 'json', 
 					type: 'post', 
 					timeout: 10000, 
 					headers: {
 						'Content-Type': 'application/json'
-					}
+					},
 					success: function(data) {
 						alert(JSON.stringify(data))
 						mui.ajax(BASEURL + '/Login', {
@@ -80,7 +77,7 @@
 					},
 					error: function(xhr, type, errorThrown) {
 						//异常处理；
-						alert(type);
+						console.log(JSON.stringify(xhr));
 					}
 				});
 
